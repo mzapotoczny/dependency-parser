@@ -1,0 +1,108 @@
+parent: $LVSR/exp/dependency/configs/dependency.yaml
+
+data:
+    sources_map:
+       abbr: abbr
+       adptype: adptype
+       animacy: animacy
+       aspect: aspect
+       case: case
+       conjtype: conjtype
+       degree: degree
+       foreign: foreign
+       gender: gender
+       gender[psor]: gender[psor]
+       hyph: hyph
+       mood: mood
+       nametype: nametype
+       negative: negative
+       number: number
+       number[psor]: number[psor]
+       numform: numform
+       numtype: numtype
+       numvalue: numvalue
+       person: person
+       pos: pos
+       poss: poss
+       prepcase: prepcase
+       prontype: prontype
+       reflex: reflex
+       style: style
+       tense: tense
+       typo: typo
+       variant: variant
+       verbform: verbform
+       voice: voice
+
+net:
+    pointers_weight: 0.6
+    input_sources:
+        - chars_per_word
+
+    dims_bidir: [1096, 1096]
+    subsample: [1, 1]
+    bidir_aggregation: add
+
+    post_merge_dims: [1024]
+
+    reproduce_rec_weight_init_bug: false
+    use_dependent_words_for_labels: true
+    use_dependent_words_for_attention: true
+
+    dec_transition: !!python/name:lvsr.bricks.FakeRecurrent
+    dependency_type: 'recurrent_hard'
+    tag_layer: 0
+
+    bottom:
+        bases_embedding_dim: 196
+        case_embedding_dim: 196
+        animacy_embedding_dim: 196
+        mood_embedding_dim: 196
+        degree_embedding_dim: 196
+        gender_embedding_dim: 196
+        aspect_embedding_dim: 196
+        variant_embedding_dim: 196
+        pos_embedding_dim: 196
+        number_embedding_dim: 196
+        verbform_embedding_dim: 196
+        person_embedding_dim: 196
+        negative_embedding_dim: 196
+        tense_embedding_dim: 196
+        hyph_embedding_dim: 196
+        typo_embedding_dim: 196
+        prontype_embedding_dim: 196
+        voice_embedding_dim: 196
+        reflex_embedding_dim: 196
+        adptype_embedding_dim: 196
+        abbr_embedding_dim: 196
+        prepcase_embedding_dim: 196
+        char_to_word_conf:
+            character_embedding_dim: 15
+            filters:
+              - [1, 50]
+              - [2, 100]
+              - [3, 150]
+              - [4, 200]
+              - [5, 250]
+              - [6, 300]
+
+            filter_activation: 'Tanh()'
+            mask_padding_characters: false
+            project_dim: 512
+            num_highway_layers: 3
+            highway_ignore_gate: True
+
+regularization:
+    dropout:
+        encoder: 0.67
+        bottom: 0.2
+        post_merge: 0.5
+
+stages:
+    pretraining:
+        number: 0
+        regularization:
+            max_norm: 0.0
+        training:
+            num_epochs: 500
+

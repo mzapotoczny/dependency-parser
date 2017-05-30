@@ -1,0 +1,61 @@
+parent: $LVSR/exp/dependency/configs/universal/base.yaml
+data:
+    dataset_filename: dependency_eu.h5
+    sources_map:
+        animacy: animacy
+        aspect: aspect
+        case: case
+        definite: definite
+        degree: degree
+        gender: gender
+        gender[dat]: gender[dat]
+        gender[erg]: gender[erg]
+        mood: mood
+        negative: negative
+        number: number
+        number[abs]: number[abs]
+        number[dat]: number[dat]
+        number[erg]: number[erg]
+        numtype: numtype
+        person: person
+        person[abs]: person[abs]
+        person[dat]: person[dat]
+        person[erg]: person[erg]
+        polite: polite
+        polite[abs]: polite[abs]
+        polite[dat]: polite[dat]
+        polite[erg]: polite[erg]
+        pos: pos
+        prontype: prontype
+        verbform: verbform
+        voice: voice
+net:
+    additional_sources:
+        - pointers
+        - animacy
+        - aspect
+        - case
+        - definite
+        - degree
+        - gender
+        - gender[dat]
+        - gender[erg]
+        - mood
+        - negative
+        - number
+        - number[abs]
+        - number[dat]
+        - number[erg]
+        - numtype
+        - person
+        - person[abs]
+        - person[dat]
+        - person[erg]
+        - polite
+        - polite[abs]
+        - polite[dat]
+        - polite[erg]
+        - pos
+        - prontype
+        - verbform
+        - voice

@@ -1,0 +1,58 @@
+parent: $LVSR/exp/dependency/configs/universal/base_smaller_x4.yaml
+data:
+    dataset_filename: dependency_pl.h5
+    sources_map:
+        abbr: abbr
+        adptype: adptype
+        animacy: animacy
+        aspect: aspect
+        case: case
+        degree: degree
+        gender: gender
+        hyph: hyph
+        mood: mood
+        negative: negative
+        number: number
+        numtype: numtype
+        person: person
+        pos: pos
+        prepcase: prepcase
+        prontype: prontype
+        reflex: reflex
+        tense: tense
+        typo: typo
+        variant: variant
+        verbform: verbform
+        voice: voice
+net:
+    enc_transition: !!python/name:lvsr.regularization.ZoneOutLSTM
+    enc_transition_params:
+        state_stay_prob: 0.05
+        cell_stay_prob: 0.5
+
+    dec_transition: !!python/name:lvsr.bricks.FakeRecurrent
+
+    additional_sources:
+        - pointers
+        - abbr
+        - adptype
+        - animacy
+        - aspect
+        - case
+        - degree
+        - gender
+        - hyph
+        - mood
+        - negative
+        - number
+        - numtype
+        - person
+        - pos
+        - prepcase
+        - prontype
+        - reflex
+        - tense
+        - typo
+        - variant
+        - verbform
+        - voice

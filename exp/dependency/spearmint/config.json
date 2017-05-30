@@ -1,0 +1,54 @@
+{
+    "database" : {
+        "name"    : "spearmint",
+        "address" : "cymes:27089"
+    },
+    "language"        : "PYTHON",
+    "main-file"       : "run_experiment.py",
+    "experiment-name" : "dep_parser_test",
+    "likelihood"      : "GAUSSIAN",
+    "variables" : {
+       "net/pointers_weight" : {
+       		"type" : "FLOAT",
+       		"size" : 1,
+       		"min"  : "0.1",
+       		"max"  : "0.9"
+       },
+       "num_enc_layers" : {
+       		"type" : "INT",
+       		"size" : 1,
+       		"min"  : 1,
+       		"max"  : 5
+       },
+       "dim_enc" : {
+       		"type" : "INT",
+       		"size" : 1,
+       		"min" : 32,
+       		"max" : 1024
+       },
+       "regularization/dropout/encoder" : {
+       		"type" : "FLOAT",
+       		"size" : 1,
+       		"min"  : "0.0",
+       		"max"  : "0.9"
+       },
+       "regularization/dropout/bottom" : {
+       		"type" : "FLOAT",
+       		"size" : 1,
+       		"min"  : "0.0",
+       		"max"  : "0.9"
+       },
+       "net/bottom/char_to_word_conf/num_highway_layers" : {
+       		"type" : "INT",
+       		"size" : 1,
+       		"min" : 1,
+       		"max" : 5
+       },
+       "stages/pretraining/regularization/max_norm" : {
+       		"type" : "FLOAT",
+       		"size" : 1,
+       		"min"  : "0.1",
+       		"max"  : "100.0"
+       }
+    }
+}

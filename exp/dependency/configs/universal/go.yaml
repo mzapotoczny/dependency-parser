@@ -1,0 +1,3 @@
+parent: $LVSR/exp/dependency/configs/universal/base.yaml
+data:
+    dataset_filename: dependency_go.h5

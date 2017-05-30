@@ -1,0 +1,57 @@
+parent: $LVSR/exp/dependency/configs/universal/base.yaml
+data:
+    dataset_filename: polish.h5
+    sources_map:
+        abbr: abbr
+        adptype: adptype
+        animacy: animacy
+        aspect: aspect
+        case: case
+        degree: degree
+        gender: gender
+        hyph: hyph
+        mood: mood
+        negative: negative
+        number: number
+        number[psor]: number[psor]
+        numtype: numtype
+        person: person
+        polarity: polarity
+        pos: pos
+        poss: poss
+        prepcase: prepcase
+        prontype: prontype
+        reflex: reflex
+        tense: tense
+        typo: typo
+        variant: variant
+        verbform: verbform
+        voice: voice
+net:
+    additional_sources:
+        - pointers
+        - abbr
+        - adptype
+        - animacy
+        - aspect
+        - case
+        - degree
+        - gender
+        - hyph
+        - mood
+        - negative
+        - number
+        - number[psor]
+        - numtype
+        - person
+        - polarity
+        - pos
+        - poss
+        - prepcase
+        - prontype
+        - reflex
+        - tense
+        - typo
+        - variant
+        - verbform
+        - voice

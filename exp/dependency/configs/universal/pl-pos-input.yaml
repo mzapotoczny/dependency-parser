@@ -1,0 +1,78 @@
+parent: $LVSR/exp/dependency/configs/universal/base.yaml
+data:
+    dataset_filename: dependency_pl.h5
+    sources_map:
+        abbr: abbr
+        adptype: adptype
+        animacy: animacy
+        aspect: aspect
+        case: case
+        degree: degree
+        gender: gender
+        hyph: hyph
+        mood: mood
+        negative: negative
+        number: number
+        numtype: numtype
+        person: person
+        pos: pos
+        prepcase: prepcase
+        prontype: prontype
+        reflex: reflex
+        tense: tense
+        typo: typo
+        variant: variant
+        verbform: verbform
+        voice: voice
+net:
+    input_sources:
+        - chars_per_word
+        - abbr
+        - adptype
+        - animacy
+        - aspect
+        - case
+        - degree
+        - gender
+        - hyph
+        - mood
+        - negative
+        - number
+        - numtype
+        - person
+        - pos
+        - prepcase
+        - prontype
+        - reflex
+        - tense
+        - typo
+        - variant
+        - verbform
+        - voice
+
+    additional_sources:
+        - pointers
+    bottom:
+        sentences_embedding_dim: 384
+        abbr_embedding_dim: 192
+        adptype_embedding_dim: 192
+        animacy_embedding_dim: 192
+        aspect_embedding_dim: 192
+        case_embedding_dim: 192
+        degree_embedding_dim: 192
+        gender_embedding_dim: 192
+        hyph_embedding_dim: 192
+        mood_embedding_dim: 192
+        negative_embedding_dim: 192
+        number_embedding_dim: 192
+        numtype_embedding_dim: 192
+        person_embedding_dim: 192
+        pos_embedding_dim: 192
+        prepcase_embedding_dim: 192
+        prontype_embedding_dim: 192
+        reflex_embedding_dim: 192
+        tense_embedding_dim: 192
+        typo_embedding_dim: 192
+        variant_embedding_dim: 192
+        verbform_embedding_dim: 192
+        voice_embedding_dim: 192

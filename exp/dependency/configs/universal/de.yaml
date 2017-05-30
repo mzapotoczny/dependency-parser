@@ -1,0 +1,11 @@
+parent: $LVSR/exp/dependency/configs/universal/base.yaml
+
+data:
+    dataset_filename: dependency_de.h5
+    sources_map:
+        pos: pos
+net:
+    additional_sources:
+        - pointers
+        - pos
+

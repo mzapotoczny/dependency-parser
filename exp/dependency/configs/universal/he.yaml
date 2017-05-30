@@ -1,0 +1,43 @@
+parent: $LVSR/exp/dependency/configs/universal/base.yaml
+data:
+    dataset_filename: dependency_he.h5
+    sources_map:
+        case: case
+        definite: definite
+        gender: gender
+        hebbinyan: hebbinyan
+        hebexistential: hebexistential
+        hebsource: hebsource
+        mood: mood
+        negative: negative
+        number: number
+        person: person
+        pos: pos
+        prefix: prefix
+        prontype: prontype
+        reflex: reflex
+        tense: tense
+        verbform: verbform
+        verbtype: verbtype
+        xtra: xtra
+net:
+    additional_sources:
+        - pointers
+        - case
+        - definite
+        - gender
+        - hebbinyan
+        - hebexistential
+        - hebsource
+        - mood
+        - negative
+        - number
+        - person
+        - pos
+        - prefix
+        - prontype
+        - reflex
+        - tense
+        - verbform
+        - verbtype
+        - xtra

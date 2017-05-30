@@ -1,0 +1,49 @@
+parent: $LVSR/exp/dependency/configs/universal/base.yaml
+data:
+    dataset_filename: dependency_ga.h5
+    sources_map:
+        case: case
+        definite: definite
+        degree: degree
+        dialect: dialect
+        form: form
+        gender: gender
+        mood: mood
+        negative: negative
+        nountype: nountype
+        number: number
+        numtype: numtype
+        parttype: parttype
+        person: person
+        pos: pos
+        poss: poss
+        prepform: prepform
+        prontype: prontype
+        reflex: reflex
+        tense: tense
+        verbform: verbform
+        voice: voice
+net:
+    additional_sources:
+        - pointers
+        - case
+        - definite
+        - degree
+        - dialect
+        - form
+        - gender
+        - mood
+        - negative
+        - nountype
+        - number
+        - numtype
+        - parttype
+        - person
+        - pos
+        - poss
+        - prepform
+        - prontype
+        - reflex
+        - tense
+        - verbform
+        - voice

@@ -1,0 +1,96 @@
+parent: $LVSR/exp/dependency/configs/dependency.yaml
+
+data:
+    dataset_filename: dependency_pl_cs_sl_ru_hr_bg.h5
+    input_languages:
+        - pl
+        - cs
+        - sl
+        - ru
+        - hr
+        - bg
+    sources_map:
+       abbr: abbr
+       adptype: adptype
+       animacy: animacy
+       aspect: aspect
+       case: case
+       conjtype: conjtype
+       degree: degree
+       foreign: foreign
+       gender: gender
+       hyph: hyph
+       mood: mood
+       nametype: nametype
+       negative: negative
+       number: number
+       numform: numform
+       numtype: numtype
+       numvalue: numvalue
+       person: person
+       pos: pos
+       poss: poss
+       prepcase: prepcase
+       prontype: prontype
+       reflex: reflex
+       style: style
+       tense: tense
+       typo: typo
+       variant: variant
+       verbform: verbform
+       voice: voice
+net:
+    pointers_weight: 0.85
+    additional_sources:
+        - pointers
+        - abbr
+        - case
+        - gender
+        - pos
+        - number
+
+    input_sources:
+        - chars_per_word
+
+    unification_rules:
+        include:
+            - generator/.*
+
+    bottom:
+        bases_embedding_dim: 196
+        case_embedding_dim: 196
+        animacy_embedding_dim: 196
+        mood_embedding_dim: 196
+        degree_embedding_dim: 196
+        gender_embedding_dim: 196
+        aspect_embedding_dim: 196
+        variant_embedding_dim: 196
+        pos_embedding_dim: 196
+        number_embedding_dim: 196
+        verbform_embedding_dim: 196
+        person_embedding_dim: 196
+        negative_embedding_dim: 196
+        tense_embedding_dim: 196
+        hyph_embedding_dim: 196
+        typo_embedding_dim: 196
+        prontype_embedding_dim: 196
+        voice_embedding_dim: 196
+        reflex_embedding_dim: 196
+        adptype_embedding_dim: 196
+        abbr_embedding_dim: 196
+        prepcase_embedding_dim: 196
+        char_to_word_conf:
+            character_embedding_dim: 15
+            filters:
+              - [1, 25]
+              - [2, 50]
+              - [3, 75]
+              - [4, 100]
+              - [5, 125]
+              - [6, 150]
+
+            filter_activation: 'Tanh()'
+            mask_padding_characters: false
+
+            num_highway_layers: 2
+

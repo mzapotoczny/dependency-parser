@@ -1,0 +1,23 @@
+parent: $LVSR/exp/dependency/configs/universal/base.yaml
+
+data:
+    dataset_filename: dependency_zh.h5
+    sources_map:
+        aspect: aspect
+        case: case
+        mood: mood
+        number: number
+        person: person
+        pos: pos
+        voice: voice
+net:
+    additional_sources:
+        - pointers
+        - aspect
+        - case
+        - mood
+        - number
+        - person
+        - pos
+        - voice
+

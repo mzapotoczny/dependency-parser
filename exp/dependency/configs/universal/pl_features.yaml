@@ -1,0 +1,39 @@
+parent: $LVSR/exp/dependency/configs/universal/base.yaml
+data:
+    dataset_filename: dependency_pl_features.h5
+    sources_map:
+        abbr: abbr
+        adptype: adptype
+        animacy: animacy
+        aspect: aspect
+        case: case
+        degree: degree
+        gender: gender
+        hyph: hyph
+        mood: mood
+        negative: negative
+        number: number
+        numtype: numtype
+        person: person
+        pos: pos
+        prepcase: prepcase
+        prontype: prontype
+        reflex: reflex
+        tense: tense
+        typo: typo
+        variant: variant
+        verbform: verbform
+        voice: voice
+        features_per_word: features_per_word
+net:
+    input_sources:
+        - features_per_word
+
+    additional_sources:
+        - pointers
+
+    bottom:
+        feats_to_word_conf:
+            highway_ignore_gate: True
+            project_dim: 512
+            num_highway_layers: 3

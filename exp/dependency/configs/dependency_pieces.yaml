@@ -1,0 +1,102 @@
+parent: $LVSR/exp/dependency/configs/dependency.yaml
+data:
+    dataset_filename: dependency_pl_pieces.h5
+    sources_map:
+        pieces_per_word: pieces_per_word
+        abbr: abbr
+        adptype: adptype
+        animacy: animacy
+        aspect: aspect
+        case: case
+        degree: degree
+        gender: gender
+        hyph: hyph
+        mood: mood
+        negative: negative
+        number: number
+        numtype: numtype
+        person: person
+        pos: pos
+        prepcase: prepcase
+        prontype: prontype
+        reflex: reflex
+        tense: tense
+        typo: typo
+        variant: variant
+        verbform: verbform
+        voice: voice
+
+net:
+    dependency_type: 'recurrent_hard'
+    pointers_weight: 0.6
+    input_sources:
+        - pieces_per_word
+    additional_sources:
+        - pointers
+        - abbr
+        - adptype
+        - animacy
+        - aspect
+        - case
+        - degree
+        - gender
+        - hyph
+        - mood
+        - negative
+        - number
+        - numtype
+        - person
+        - pos
+        - prepcase
+        - prontype
+        - reflex
+        - tense
+        - typo
+        - variant
+        - verbform
+        - voice
+
+    dims_bidir: [548, 548]
+    subsample: [1, 1]
+    bidir_aggregation: add
+
+    reproduce_rec_weight_init_bug: false
+    use_dependent_words_for_labels: true
+    use_dependent_words_for_attention: true
+
+    dec_transition: !!python/name:lvsr.bricks.FakeRecurrent
+
+    tag_layer: 0
+
+    bottom:
+        char_to_word_conf:
+            character_embedding_dim: 15
+            filters:
+              - [1, 50]
+              - [2, 100]
+              - [3, 150]
+              - [4, 200]
+              - [5, 250]
+              - [6, 300]
+
+            filter_activation: 'Tanh()'
+            mask_padding_characters: false
+            project_dim: 512
+            num_highway_layers: 3
+            highway_ignore_gate: True
+
+    post_merge_dims: [512]
+
+regularization:
+    dropout:
+        encoder: 0.67
+        bottom: 0.2
+        post_merge: 0.5
+
+stages:
+    pretraining:
+        number: 0
+        regularization:
+            max_norm: 0.0
+        training:
+            num_epochs: 500

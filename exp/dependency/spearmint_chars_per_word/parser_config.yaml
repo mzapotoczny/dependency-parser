@@ -1,0 +1,38 @@
+parent: $LVSR/exp/dependency/configs/dependency.yaml
+net:
+    pointers_weight: 0.6
+    input_sources:
+        - chars_per_word
+
+    dims_bidir: [384, 384, 384]
+    subsample: [1, 1, 1]
+    bidir_aggregation: add
+
+    bottom:
+        char_to_word_conf:
+            character_embedding_dim: 15
+            filters:
+              - [1, 25]
+              - [2, 50]
+              - [3, 75]
+              - [4, 100]
+              - [5, 125]
+              - [6, 150]
+
+            filter_activation: 'Tanh()'
+            mask_padding_characters: false
+
+            num_highway_layers: 2
+
+regularization:
+    dropout:
+        encoder: 0.5
+        bottom: 0.0
+
+stages:
+    pretraining:
+        number: 0
+        regularization:
+            max_norm: 0.0
+        training:
+            num_epochs: 500

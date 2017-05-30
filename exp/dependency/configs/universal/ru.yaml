@@ -1,0 +1,30 @@
+parent: $LVSR/exp/dependency/configs/universal/base.yaml
+
+data:
+    dataset_filename: dependency_ru.h5
+    sources_map:
+        animacy: animacy
+        aspect: aspect
+        case: case
+        gender: gender
+        mood: mood
+        number: number
+        person: person
+        pos: pos
+        reflex: reflex
+        tense: tense
+        voice: voice
+net:
+    additional_sources:
+        - pointers
+        - animacy
+        - aspect
+        - case
+        - gender
+        - mood
+        - number
+        - person
+        - pos
+        - reflex
+        - tense
+        - voice

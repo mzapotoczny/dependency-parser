@@ -1,0 +1,36 @@
+parent: $LVSR/exp/dependency/configs/multi/base.yaml
+
+data:
+    dataset_filename: dependency_pl_ru.h5
+
+    input_languages:
+        - pl
+        - ru
+net:
+    additional_sources:
+        - pointers
+        - case
+        - animacy
+        - mood
+        - degree
+        - gender
+        - aspect
+        - variant
+        - pos
+        - number
+        - verbform
+        - person
+        - negative
+        - tense
+        - hyph
+        - typo
+        - prontype
+        - voice
+        - reflex
+        - adptype
+        - abbr
+        - prepcase
+
+    unification_rules:
+        include:
+            - generator/.*

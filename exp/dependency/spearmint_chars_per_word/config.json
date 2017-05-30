@@ -1,0 +1,54 @@
+{
+    "database" : {
+        "name"    : "spearmint",
+        "address" : "cymes:27089"
+    },
+    "language"        : "PYTHON",
+    "main-file"       : "run_experiment.py",
+    "experiment-name" : "dep_parser_chars_optim",
+    "likelihood"      : "GAUSSIAN",
+    "variables" : {
+       "num_enc_layers" : {
+       		"type" : "INT",
+       		"size" : 1,
+       		"min"  : 2,
+       		"max"  : 3
+       },
+       "dim_enc" : {
+       		"type" : "INT",
+       		"size" : 1,
+       		"min" : 256,
+       		"max" : 1024
+       },
+       "regularization/dropout/encoder" : {
+       		"type" : "FLOAT",
+       		"size" : 1,
+       		"min"  : "0.5",
+       		"max"  : "0.9"
+       },
+       "regularization/dropout/bottom" : {
+       		"type" : "FLOAT",
+       		"size" : 1,
+       		"min"  : "0.0",
+       		"max"  : "0.4"
+       },
+       "net/bottom/char_to_word_conf/num_highway_layers" : {
+       		"type" : "INT",
+       		"size" : 1,
+       		"min" : 1,
+       		"max" : 5
+       },
+	   "base_cpw_filter_cnt"  : {
+       		"type" : "INT",
+       		"size" : 1,
+       		"min" : 1,
+       		"max" : 50
+       },
+       "net/bottom/char_to_word_conf/project_dim"  : {
+       		"type" : "INT",
+       		"size" : 1,
+       		"min" : 64,
+       		"max" : 1024
+       }
+    }
+}

@@ -1,0 +1,52 @@
+parent: $LVSR/exp/dependency/configs/dependency.yaml
+
+net:
+    pointers_weight: 0.6
+    input_sources:
+        - chars_per_word
+
+    dims_bidir: [137, 137]
+    subsample: [1, 1]
+    bidir_aggregation: add
+
+    reproduce_rec_weight_init_bug: false
+    use_dependent_words_for_labels: true
+    use_dependent_words_for_attention: true
+
+    dec_transition: !!python/name:lvsr.bricks.FakeRecurrent
+
+    bottom:
+        char_to_word_conf:
+            highway_ignore_gate: True
+            character_embedding_dim: 15
+            filters:
+              - [1, 50]
+              - [2, 100]
+              - [3, 150]
+              - [4, 200]
+              - [5, 250]
+              - [6, 300]
+
+            filter_activation: 'Tanh()'
+            mask_padding_characters: false
+            project_dim: 512
+            num_highway_layers: 3
+
+    post_merge_dims: [128]
+
+    dependency_type: 'recurrent_hard'
+    tag_layer: 0
+
+regularization:
+    dropout:
+        encoder: 0.67
+        bottom: 0.2
+        post_merge: 0.5
+
+stages:
+    pretraining:
+        number: 0
+        regularization:
+            max_norm: 0.0
+        training:
+            num_epochs: 500

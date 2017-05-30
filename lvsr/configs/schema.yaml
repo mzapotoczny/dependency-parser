@@ -1,0 +1,260 @@
+map:
+    parent:
+        type: str
+    cmd_args:
+        type: any
+    data:
+        map:
+            batch_size:
+                type: int
+            validation_batch_size:
+                type: int
+            max_length:
+                type: int
+            normalization:
+                type: str
+            sort_k_batches:
+                type: str
+            dataset_filename:
+                type: str
+            dataset_class:
+                type: any
+            name_mapping:
+                map:
+                    train:
+                        type: str
+                    train_subsampled:
+                        type: str
+                    valid:
+                        type: str
+                    test:
+                        type: str
+            sources_map:
+                type: map
+                allowempty: true
+            add_eos:
+                type: bool
+            add_bos:
+                type: int
+            input_languages:
+                sequence:
+                    - type: str
+                required: no
+            # legacy, not supported any more
+            prepend_eos:
+                type: bool
+    net:
+        map:
+            bidir:
+                type: bool
+            dependency:
+                type: bool
+                required: no
+            pointers_soften:
+                type: float
+                required: no
+            pointers_weight:
+                type: float
+                required: no
+            tags_weight:
+                type: float
+                required: no
+            tag_layer:
+                type: int
+            dependency_type:
+                type: str
+                required: no
+            dim_dec:
+                type: int
+            dec_stack:
+                type: int
+            dim_matcher:
+                type: int
+            dim_output_embedding:
+                type: int
+            dims_bidir:
+                sequence:
+                    - type: int
+            bidir_aggregation:
+                type: str
+            post_merge_dims:
+                sequence:
+                    - type: int
+            conv_n:
+                type: int
+            conv_num_filters:
+                type: int
+            energy_normalizer:
+                type: str
+            input_sources:
+                sequence:
+                    - type: str
+            additional_sources:
+                sequence:
+                    - type: str
+            bottom:
+                map:
+                    bottom_class:
+                        type: any
+                    activation:
+                        type: any
+                    dims:
+                        sequence:
+                            - type: int
+                    regex;(.*):
+                        type: any
+            post_merge_activation:
+                type: any
+            use_dependent_words_for_labels:
+                type: bool
+            use_dependent_words_for_attention:
+                type: bool
+            enc_transition:
+                type: any
+            enc_transition_params:
+                type: map
+                allowempty: true
+            dec_transition:
+                type: any
+            dec_transition_params:
+                type: map
+                allowempty: true
+            subsample:
+                sequence:
+                    - type: int
+            attention_type:
+                type: str
+            use_states_for_readout:
+                type: bool
+            criterion:
+                map:
+                    name:
+                        type: str
+                    min_reward:
+                        type: int
+            max_decoded_length_scale:
+                type: float
+            reproduce_rec_weight_init_bug:
+                type: bool
+            lm:
+                type: any
+            prior:
+                map:
+                    before:
+                        type: int
+                    after:
+                        type: int
+                    initial_begin:
+                        type: int
+                    initial_end:
+                        type: int
+                    min_speed:
+                        type: float
+                    max_speed:
+                        type: float
+                    type:
+                        type: str
+            unification_rules:
+                required: no
+                map:
+                    include:
+                        sequence:
+                            - type: str
+                    exclude:
+                       required: no
+                       sequence:
+                           - type: str                           
+    regularization:
+        map:
+            dropout:
+                type: map
+                allowempty: true
+            bidir_futures:
+                type: map
+                allowempty: true
+            noise:
+                type: float
+            max_norm:
+                type: float
+            adaptive_noise:
+                type: map
+                allowempty: true
+            activation_stability:
+                type: float
+    initialization:
+        matching-rule: any
+        map:
+            regex;(/.*):
+                matching-rule: any
+                map:
+                    regex;(weights_init|biases_init|rec_weights_init|initial_states_init):
+                        type: any
+    training:
+        map:
+            num_batches:
+                type: int
+            num_epochs:
+                type: int
+            gradient_threshold:
+                type: float
+            clip_stds:
+                type: float
+            scale:
+                type: float
+            momentum:
+                type: float
+            epsilon:
+                type: float
+            decay_rate:
+                type: float
+            beta1:
+                type: float
+            beta2:
+                type: float
+            rules:
+                sequence:
+                    - type: str
+            exploration:
+                type: str
+            restart_from:
+                type: str
+            patience:
+                map:
+                    min_epochs:
+                        type: int
+                    patience_factor:
+                        type: float
+                    notification_names:
+                        sequence:
+                            - type: str
+            min_performance_stops:
+                sequence:
+                    - sequence:
+                        - type: float
+                        - type: int
+            burn_in_steps:
+                type: int
+    monitoring:
+        map:
+            validate_every_epochs:
+                type: int
+            validate_every_batches:
+                type: int
+            search_every_epochs:
+                type: int
+            search_every_batches:
+                type: int
+            search:
+                map:
+                    beam_size:
+                        type: int
+                    char_discount:
+                        type: float
+                    round_to_inf:
+                        type: float
+                    stop_on:
+                        type: str
+    stages:
+        type: any
+    vocabulary:
+        type: str

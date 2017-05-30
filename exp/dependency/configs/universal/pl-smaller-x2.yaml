@@ -1,0 +1,51 @@
+parent: $LVSR/exp/dependency/configs/universal/base_smaller_x2.yaml
+data:
+    dataset_filename: dependency_pl.h5
+    sources_map:
+        abbr: abbr
+        adptype: adptype
+        animacy: animacy
+        aspect: aspect
+        case: case
+        degree: degree
+        gender: gender
+        hyph: hyph
+        mood: mood
+        negative: negative
+        number: number
+        numtype: numtype
+        person: person
+        pos: pos
+        prepcase: prepcase
+        prontype: prontype
+        reflex: reflex
+        tense: tense
+        typo: typo
+        variant: variant
+        verbform: verbform
+        voice: voice
+net:
+    additional_sources:
+        - pointers
+        - abbr
+        - adptype
+        - animacy
+        - aspect
+        - case
+        - degree
+        - gender
+        - hyph
+        - mood
+        - negative
+        - number
+        - numtype
+        - person
+        - pos
+        - prepcase
+        - prontype
+        - reflex
+        - tense
+        - typo
+        - variant
+        - verbform
+        - voice

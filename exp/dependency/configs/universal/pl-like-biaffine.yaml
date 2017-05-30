@@ -1,0 +1,65 @@
+parent: $LVSR/exp/dependency/configs/dependency.yaml
+
+data:
+    dataset_filename: dependency_pl.h5
+    sources_map:
+        pos: pos
+        sentences: sentences
+        pointers: deps
+
+net:
+    additional_sources:
+        - pointers
+ 
+    pointers_weight: 0.6
+    input_sources:
+        - sentences
+        - pos
+
+    dims_bidir: [400, 400, 400]
+    subsample: [1, 1, 1]
+    bidir_aggregation: concat
+
+    reproduce_rec_weight_init_bug: false
+    use_dependent_words_for_labels: true
+    use_dependent_words_for_attention: true
+
+    dec_transition: !!python/name:lvsr.bricks.FakeRecurrent
+
+    bottom:
+        char_to_word_conf:
+            highway_ignore_gate: True
+            character_embedding_dim: 15
+            filters:
+              - [1, 50]
+              - [2, 100]
+              - [3, 150]
+              - [4, 200]
+              - [5, 250]
+              - [6, 300]
+
+            filter_activation: 'Tanh()'
+            mask_padding_characters: false
+            project_dim: 512
+            num_highway_layers: 3
+        sentences_embedding_dim: 100
+        pos_embedding_dim: 100
+
+    post_merge_dims: [512]
+
+    dependency_type: 'recurrent_hard'
+    tag_layer: 0
+
+regularization:
+    dropout:
+        encoder: 0.33
+        bottom: 0.33
+        post_merge: 0.33
+
+stages:
+    pretraining:
+        number: 0
+        regularization:
+            max_norm: 0.0
+        training:
+            num_epochs: 500

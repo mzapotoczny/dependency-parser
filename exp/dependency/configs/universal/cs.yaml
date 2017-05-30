@@ -1,0 +1,67 @@
+parent: $LVSR/exp/dependency/configs/universal/base.yaml
+data:
+    dataset_filename: dependency_cs.h5
+    sources_map:
+        abbr: abbr
+        adptype: adptype
+        animacy: animacy
+        aspect: aspect
+        case: case
+        conjtype: conjtype
+        degree: degree
+        foreign: foreign
+        gender: gender
+        gender[psor]: gender[psor]
+        hyph: hyph
+        mood: mood
+        nametype: nametype
+        negative: negative
+        number: number
+        number[psor]: number[psor]
+        numform: numform
+        numtype: numtype
+        numvalue: numvalue
+        person: person
+        pos: pos
+        poss: poss
+        prepcase: prepcase
+        prontype: prontype
+        reflex: reflex
+        style: style
+        tense: tense
+        variant: variant
+        verbform: verbform
+        voice: voice
+net:
+    additional_sources:
+        - pointers
+        - abbr
+        - adptype
+        - animacy
+        - aspect
+        - case
+        - conjtype
+        - degree
+        - foreign
+        - gender
+        - gender[psor]
+        - hyph
+        - mood
+        - nametype
+        - negative
+        - number
+        - number[psor]
+        - numform
+        - numtype
+        - numvalue
+        - person
+        - pos
+        - poss
+        - prepcase
+        - prontype
+        - reflex
+        - style
+        - tense
+        - variant
+        - verbform
+        - voice

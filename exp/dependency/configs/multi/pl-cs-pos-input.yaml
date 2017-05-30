@@ -1,0 +1,112 @@
+parent: $LVSR/exp/dependency/configs/multi/base.yaml
+
+data:
+    dataset_filename: dependency_pl_cs_different_eos.h5
+    input_languages:
+        - pl
+        - cs
+    sources_map:
+        abbr: abbr
+        adptype: adptype
+        animacy: animacy
+        aspect: aspect
+        case: case
+        degree: degree
+        gender: gender
+        hyph: hyph
+        mood: mood
+        negative: negative
+        number: number
+        numtype: numtype
+        person: person
+        pos: pos
+        prepcase: prepcase
+        prontype: prontype
+        reflex: reflex
+        tense: tense
+        typo: typo
+        variant: variant
+        verbform: verbform
+        voice: voice
+net:
+    input_sources:
+        - chars_per_word
+        - abbr
+        - adptype
+        - animacy
+        - aspect
+        - case
+        - degree
+        - gender
+        - hyph
+        - mood
+        - negative
+        - number
+        - person
+        - pos
+        - prepcase
+        - prontype
+        - reflex
+        - tense
+        - typo
+        - variant
+        - verbform
+        - voice
+
+    additional_sources:
+        - pointers
+
+    unification_rules:
+        include:
+            - .*
+        exclude:
+            - .*char_embedder/.*
+            - .*bottom/.*_lut
+    bottom:
+        sentences_embedding_dim: 384
+        abbr_embedding_dim: 192
+        adptype_embedding_dim: 192
+        animacy_embedding_dim: 192
+        aspect_embedding_dim: 192
+        case_embedding_dim: 192
+        degree_embedding_dim: 192
+        gender_embedding_dim: 192
+        hyph_embedding_dim: 192
+        mood_embedding_dim: 192
+        negative_embedding_dim: 192
+        number_embedding_dim: 192
+        numtype_embedding_dim: 192
+        person_embedding_dim: 192
+        pos_embedding_dim: 192
+        prepcase_embedding_dim: 192
+        prontype_embedding_dim: 192
+        reflex_embedding_dim: 192
+        tense_embedding_dim: 192
+        typo_embedding_dim: 192
+        variant_embedding_dim: 192
+        verbform_embedding_dim: 192
+        voice_embedding_dim: 192
+
+        sentences_cs_embedding_dim: 384
+        abbr_cs_embedding_dim: 192
+        adptype_cs_embedding_dim: 192
+        animacy_cs_embedding_dim: 192
+        aspect_cs_embedding_dim: 192
+        case_cs_embedding_dim: 192
+        degree_cs_embedding_dim: 192
+        gender_cs_embedding_dim: 192
+        hyph_cs_embedding_dim: 192
+        mood_cs_embedding_dim: 192
+        negative_cs_embedding_dim: 192
+        number_cs_embedding_dim: 192
+        numtype_cs_embedding_dim: 192
+        person_cs_embedding_dim: 192
+        pos_cs_embedding_dim: 192
+        prepcase_cs_embedding_dim: 192
+        prontype_cs_embedding_dim: 192
+        reflex_cs_embedding_dim: 192
+        tense_cs_embedding_dim: 192
+        typo_cs_embedding_dim: 192
+        variant_cs_embedding_dim: 192
+        verbform_cs_embedding_dim: 192
+        voice_cs_embedding_dim: 192

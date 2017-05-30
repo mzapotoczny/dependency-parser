@@ -1,0 +1,97 @@
+parent: $LVSR/lvsr/configs/prototype.yaml
+data:
+    dataset_filename: dependency.h5
+    dataset_class: !!python/name:lvsr.dependency.datasets.H5PYTextDataset
+
+    name_mapping:
+        train: train
+        train_subsampled:   train
+        valid: dev
+        test:  test
+
+    sources_map:
+        labels: deps_types
+        chars_per_word: chars_per_word
+        sentences: sentences
+        pointers: deps
+        bases: bases
+        poses: poses
+
+    max_length: 10000000000000
+    normalization: ''
+
+    add_eos: False
+    prepend_eos: False
+
+    sort_k_batches: ''
+    batch_size: 16
+    validation_batch_size: 64
+
+initialization:
+    /recognizer:
+        weights_init:
+            !!python/object/apply:blocks.initialization.IsotropicGaussian [0.01]
+        biases_init:
+            !!python/object/apply:blocks.initialization.Constant [0.0]
+        rec_weights_init:
+            !!python/object/apply:blocks.initialization.Orthogonal []
+        initial_states_init:
+            !!python/object/apply:blocks.initialization.IsotropicGaussian [0.001]
+
+net:
+    input_sources:
+        - sentences
+        
+    additional_sources:
+        - pointers
+
+    dependency: True
+
+    pointers_weight: 0.6
+
+    bottom:
+        bottom_class: !!python/name:lvsr.dependency.bricks.DependencyBottom
+        dims: []
+        activation: null
+        sentences_embedding_dim: 384
+
+    enc_transition: !!python/name:blocks.bricks.recurrent.GatedRecurrent
+    dims_bidir: [384]
+    subsample: [1]
+
+    dec_transition: !!python/name:blocks.bricks.recurrent.GatedRecurrent
+    dim_dec: 384
+    dim_matcher: 384
+
+    attention_type: content
+
+    post_merge_dims: [384]
+    post_merge_activation: !!python/object/apply:blocks.bricks.Maxout [2]
+
+    use_states_for_readout: True
+
+    max_decoded_length_scale: 0.25
+
+training:
+    rules: [momentum, adadelta]
+    scale: 1.0
+    momentum: 0.0
+
+    decay_rate: 0.95
+    epsilon: 1.0e-8
+
+    gradient_threshold: 1000.0
+    num_batches: 100000000
+    num_epochs: 100000
+
+    patience:
+        patience_factor: 1.5
+        min_epochs: 3
+
+stages:
+    pretraining:
+        number: 0
+        regularization:
+            max_norm: 1.0
+        training:
+            num_epochs: 150
