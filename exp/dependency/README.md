@@ -16,7 +16,7 @@ where `XX` and `YY` are shortcuts for language name (pl, cs, en etc).
 The other option is to use script that will prepare the parameters for us:
 `python convert_data_params.py UD_TREEBANKS_FOLDER FST_LANGUAGE_FOLDER SND_LANGUAGE_FOLDER ...`
 So for example the command for creating polish-czech dataset will be
-`python convert_data.py [OPTIONS] [OUTFILE.h5] `python convert_data_params.py data/ UD_Polish UD_Czech` `
+`python convert_data.py [OPTIONS] [OUTFILE.h5] $(python convert_data_params.py data/ UD_Polish UD_Czech) `
 
 ## Converter options
 
